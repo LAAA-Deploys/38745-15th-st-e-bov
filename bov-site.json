@@ -128,8 +128,8 @@
       "grm_market": 7.19,
       "cap_current": 6.42,
       "cap_market": 7.44,
-      "noi_current": 179657,
-      "noi_market": 208212,
+      "noi_current": 179654,
+      "noi_market": 208209,
       "tax_rate": 1.69,
       "expense_total": 159498,
       "expense_per_unit": 7250,
@@ -147,8 +147,8 @@
       ],
       "operating": {
         "sgi": [
-          360615,
-          392343
+          360612,
+          392340
         ],
         "vacancy": [
           21460,
@@ -156,8 +156,8 @@
         ],
         "vacancy_pct": 6.0,
         "goi": [
-          339155,
-          368979
+          339152,
+          368976
         ],
         "expenses": [
           159498,
@@ -168,16 +168,16 @@
           43.6
         ],
         "noi": [
-          179657,
-          208212
+          179654,
+          208209
         ],
         "loan_payments": [
           -115593,
           -115593
         ],
         "pretax_cf": [
-          64063,
-          92619
+          64060,
+          92616
         ],
         "pretax_cf_pct": [
           5.08,
@@ -188,8 +188,8 @@
           17542
         ],
         "total_return": [
-          81606,
-          110161
+          81602,
+          110158
         ],
         "total_return_pct": [
           6.48,
@@ -338,7 +338,7 @@
       ],
       "physical_narrative": [
         "The property is a two story wood frame apartment building of 13,188 gross square feet across 22 units. Eleven enclosed garages plus open on-site parking on a 1.03 acre corner lot.",
-        "Physical facts here come from the assessment record and current site photography published by the ownership's own management company, and from the June 2026 rent roll for the unit mix. Public amenity flags were not relied on: the assessor and the commercial data record both carry pool information that the trailing twelve month operating statement contradicts, and the operating statement is the better evidence.",
+        "Physical facts here come from the assessment record and current site photography published by the ownership's own management company, and from the June 2026 rent roll for the unit mix. Public amenity flags were not relied on. Where the public record and the operating statement disagree on an amenity, the operating statement governs, because a line of recurring spend is harder evidence than a flag in an assessment file.",
         "A physical inspection, a roof and mechanical assessment, and a measured survey remain buyer diligence items. Nothing in this report substitutes for them."
       ],
       "market_narrative": [
@@ -352,8 +352,8 @@
       ],
       "rent_narrative": [
         "Pro forma rents are set at the highest rent actually achieved at this property for each unit type on the June 2026 rent roll. They are floors supported by signed leases in the building, not projections.",
-        "Current asking rents at nearby properties, accessed August 4, 2026, sit above those floors on every unit type. The one bedroom asking cluster runs $1,475 to $1,590 and the conventional two bedroom cluster runs $1,560 to $1,850. Those are advertised rents, not signed leases, and are shown as sensitivity only.",
-        "The properties in the table are Carmel Apartments at 38722 11th Street East, a 112 unit 1984 community with a pool and gated parking; Colonial Terrace at 38719 10th Street East, 51 units built in 1986, advertising an 800 square foot two bedroom; Shadow Springs at 38110 5th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 E Avenue R; and two individual listings, an 850 square foot one bedroom on 10th Place East and a 950 square foot two bedroom on 11th Street East. Unit sizes read as a dash in the table because only three of the nine listings publish one, and an average struck on three of nine would misstate the set. Carmel is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
+        "The 4 current asking rents in the table below were accessed on August 4, 2026 and sit above those floors: one bedroom asks run $1,475 to $1,550. Distances are straight line from this building to each comparable, computed from the same approved coordinates the map is drawn from, and no comparable in the set is more than 2.13 miles away. These are advertised rents rather than signed leases and are shown as market sensitivity only.",
+        "The properties shown are the 10th Place East listing at 38572 10th Place East; Carmel Apartments at 38722 11th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 E Avenue R. Of these, 1 publish a unit size: the 10th Place East listing at 850 square feet. The size column reads as a dash because an average struck on 1 of 4 rows would misstate the set. Carmel Apartments is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
         "The owner's stated market rent column in this building's rent roll sits below rents the building is already achieving. That column is stale and was not used anywhere in this analysis."
       ],
       "valuation_narrative": [
@@ -395,7 +395,8 @@
         "Expenses are presented on a buyer-normalized basis. Ownership payroll and management company overhead are replaced with a 4% third-party management fee, a separate resident manager rent credit required at 16 or more units in California, insurance at $1,325 per unit excluding earthquake coverage, and reserves. Property tax is reassessed at the value conclusion using effective rates observed on recently reassessed Palmdale sales, not the county default.",
         "Unit square footages are an allocation of the assessor-verified gross building area across the rent roll unit mix, weighted by bedroom count. They are not a measured survey and will differ from advertised unit sizes.",
         "Comparable sale prices, dates, unit counts and building areas were verified against recorded deeds and assessment records. Cap rates and gross rent multipliers reported by commercial data services on those sales were not independently verified and are deliberately excluded.",
-        "Rent comparables reflect current public asking rents accessed on August 4, 2026. Asking rents are not signed leases and are shown as market sensitivity only.",
+        "The collection loss line combines a 3% physical vacancy allowance with a credit loss allowance of 2% to 3% calibrated to this property's trailing delinquency. The operating table shows the two combined as a single reserve; it is not a 5% or 6% physical vacancy assumption.",
+        "Rent comparables reflect current public asking rents accessed on August 4, 2026. Asking rents are not signed leases and are shown as market sensitivity only. Distances are straight line from the subject, computed from the same approved rooftop coordinates used to render the maps, and are not driving distances.",
         "Flood and earthquake fault findings were revalidated on August 4, 2026. Fire hazard severity, landslide susceptibility and environmental screening data were unavailable at that date and are not stated in this report."
       ],
       "gallery": [
@@ -428,7 +429,7 @@
           "unit_type": "1BR 1BA",
           "rent": 1525,
           "square_feet": null,
-          "distance": 0.3,
+          "distance": 0.45,
           "image": null
         },
         {
@@ -436,7 +437,7 @@
           "unit_type": "1BR 1BA",
           "rent": 1550,
           "square_feet": null,
-          "distance": 0.5,
+          "distance": 0.35,
           "image": null
         },
         {
@@ -444,7 +445,7 @@
           "unit_type": "1BR",
           "rent": 1535,
           "square_feet": null,
-          "distance": 1.1,
+          "distance": 2.13,
           "image": null
         },
         {
@@ -452,7 +453,7 @@
           "unit_type": "1BR",
           "rent": 1475,
           "square_feet": null,
-          "distance": 1.0,
+          "distance": 1.71,
           "image": null
         }
       ],
@@ -580,7 +581,7 @@
   ],
   "stats": {
     "live": true,
-    "generated": "2026-08-04T22:53:09+00:00",
+    "generated": "2026-08-04T23:04:18+00:00",
     "geography": {
       "states": 21,
       "has_dc": true,

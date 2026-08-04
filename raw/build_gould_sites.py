@@ -143,12 +143,40 @@ DISCLOSURE_COMMON = [
     "recorded deeds and assessment records. Cap rates and gross rent multipliers reported by "
     "commercial data services on those sales were not independently verified and are "
     "deliberately excluded.",
+    "The collection loss line combines a 3% physical vacancy allowance with a credit loss "
+    "allowance of 2% to 3% calibrated to this property's trailing delinquency. The operating "
+    "table shows the two combined as a single reserve; it is not a 5% or 6% physical vacancy "
+    "assumption.",
     "Rent comparables reflect current public asking rents accessed on August 4, 2026. Asking "
-    "rents are not signed leases and are shown as market sensitivity only.",
+    "rents are not signed leases and are shown as market sensitivity only. Distances are "
+    "straight line from the subject, computed from the same approved rooftop coordinates used "
+    "to render the maps, and are not driving distances.",
     "Flood and earthquake fault findings were revalidated on August 4, 2026. Fire hazard "
     "severity, landslide susceptibility and environmental screening data were unavailable at "
     "that date and are not stated in this report.",
 ]
+
+
+def miles(a, b):
+    """Straight-line miles between two ROOFTOP pins.
+
+    The Phase 4 survey carried eyeballed street-grid estimates, and the page
+    prints them next to a map a seller can measure: Carmel showed 0.50 mi
+    against pins 0.81 mi apart. Distances are now computed from the same
+    approved coordinates the map is rendered from, and the narrative says they
+    are straight-line.
+    """
+    import math
+    lat1, lng1 = math.radians(a[0]), math.radians(a[1])
+    lat2, lng2 = math.radians(b[0]), math.radians(b[1])
+    h = (math.sin((lat2 - lat1) / 2) ** 2
+         + math.cos(lat1) * math.cos(lat2) * math.sin((lng2 - lng1) / 2) ** 2)
+    return 2 * 3958.7613 * math.asin(math.sqrt(h))
+
+
+def rent_bucket(unit_type):
+    t = unit_type.split()[0].upper()
+    return {"1BR": "one bedroom", "2BR": "two bedroom", "3BR": "three bedroom"}.get(t, t)
 
 
 def alloc_sf(building_sf, mix):
@@ -257,6 +285,17 @@ RENT_COMP_LIBRARY = {
                   "address": "200 E Avenue R", "unit_type": "1BR",
                   "rent": 1475, "square_feet": None, "distance": 1.0},
 }
+
+RENT_COMP_NAMES = {
+    "carmel-1br": "Carmel Apartments", "carmel-2br2ba": "Carmel Apartments",
+    "carmel-3br": "Carmel Apartments", "colonial": "Colonial Terrace",
+    "tenth-pl": "the 10th Place East listing", "eleventh-2br": "the 11th Street East listing",
+    "shadow-springs": "Shadow Springs", "mountain-shadows": "Mountain Shadows",
+    "ridgeview": "Ridgeview Village",
+}
+#: Published unit sizes, where the listing states one. Named per comp key so the
+#: narrative can cite only the sizes that belong to the rows this page renders.
+RENT_COMP_SIZES = {"colonial": 800, "tenth-pl": 850, "eleventh-2br": 950}
 
 ACTIVE_COMPS = [
     {"key": "PINE_GROVE", "address": "518 E Avenue Q-12, Palmdale",
@@ -487,7 +526,12 @@ def build_property(p, un):
     # figure on the page derives from one number rather than two sources.
     vac_c = gsr_c * un["assumptions"]["vacancy"]
     cred_c = gsr_c * un["assumptions"]["credit_loss"]
-    oi = cur["other_income"]
+    # Quantize other income to the monthly figure the page prints, times twelve.
+    # Carrying the raw annual left the monthly table x12 and the annual table
+    # $2 to $4 apart, so a seller cross-footing the two found the operating
+    # statement did not reconcile after we claimed line-by-line reconciliation.
+    # The shift is at most $12 a year and it makes both tables exact.
+    oi = money_round(cur["other_income"] / 12) * 12
     egi_c = gsr_c - vac_c - cred_c + oi
     mgmt_c = gsr_c * un["assumptions"]["management"]
     fixed = (cur["normalized_fixed_opex"] + cur["manager_credit"]
@@ -495,9 +539,15 @@ def build_property(p, un):
     pre_tax_opex_c = fixed + mgmt_c
     pre_tax_noi_c = egi_c - pre_tax_opex_c
 
-    vac_m, cred_m = pf["vacancy"], pf["credit_loss"]
-    egi_m, mgmt_m = pf["egi"], pf["management"]
-    pre_tax_opex_m, pre_tax_noi_m = pf["pre_tax_opex"], pf["pre_tax_noi"]
+    # Recomputed on the same basis so both columns use the quantized other
+    # income. Verified to reproduce the stored Phase 6 values exactly before the
+    # quantization is applied.
+    vac_m = gsr_m * un["assumptions"]["vacancy"]
+    cred_m = gsr_m * un["assumptions"]["credit_loss"]
+    egi_m = gsr_m - vac_m - cred_m + oi
+    mgmt_m = gsr_m * un["assumptions"]["management"]
+    pre_tax_opex_m = fixed + mgmt_m
+    pre_tax_noi_m = egi_m - pre_tax_opex_m
 
     price = p["price"]
     tax, lines = build_expense_lines(
@@ -523,9 +573,12 @@ def build_property(p, un):
     rent_comps = []
     for k in p["rent_comps"]:
         rc = RENT_COMP_LIBRARY[k]
+        pin = PINS[rc["key"]]
         rent_comps.append({"address": rc["address"], "unit_type": rc["unit_type"],
                            "rent": rc["rent"], "square_feet": rc["square_feet"],
-                           "distance": rc["distance"], "image": None})
+                           "distance": round(miles((p["lat"], p["lng"]),
+                                                   (pin["lat"], pin["lng"])), 2),
+                           "image": None})
 
     sale_comps = [{k: v for k, v in c.items() if k != "key"} for c in SALE_COMPS]
     active = [{k: v for k, v in c.items() if k != "key"} for c in ACTIVE_COMPS]
@@ -594,9 +647,15 @@ def build_property(p, un):
         f"{p['units']} units. {p['parking']}.",
         "Physical facts here come from the assessment record and current site photography "
         "published by the ownership's own management company, and from the June 2026 rent roll "
-        "for the unit mix. Public amenity flags were not relied on: the assessor and the "
-        "commercial data record both carry pool information that the trailing twelve month "
-        "operating statement contradicts, and the operating statement is the better evidence.",
+        "for the unit mix. Public amenity flags were not relied on."
+        + (" The pool is a case in point: it is carried in the trailing twelve month operating "
+           "statement as recurring pool service, and it appears in current site photography, "
+           "while the public records for this parcel understate it. The operating statement and "
+           "the photographs are the better evidence."
+           if p["pool_yes"] else
+           " Where the public record and the operating statement disagree on an amenity, the "
+           "operating statement governs, because a line of recurring spend is harder evidence "
+           "than a flag in an assessment file."),
         "A physical inspection, a roof and mechanical assessment, and a measured survey remain "
         "buyer diligence items. Nothing in this report substitutes for them.",
     ]
@@ -628,24 +687,47 @@ def build_property(p, un):
         "a clean, stabilized building it does not have to fix.",
     ]
 
+    # Derived from the comps this property actually displays, never from the
+    # survey-wide set. The earlier fixed paragraph named nine properties and a
+    # $1,475 to $1,590 one-bedroom range while a given page rendered as few as
+    # four rows with a $1,550 high, so a seller could disprove the sensitivity
+    # from the same page. Generating it from p["rent_comps"] makes that
+    # impossible by construction.
+    buckets = {}
+    for rc in rent_comps:
+        buckets.setdefault(rent_bucket(rc["unit_type"]), []).append(rc["rent"])
+    spread = "; ".join(
+        f"{b} asks run ${min(v):,} to ${max(v):,}" if min(v) != max(v)
+        else f"the {b} ask is ${min(v):,}"
+        for b, v in buckets.items())
+    named = "; ".join(
+        f"{RENT_COMP_NAMES[k]} at {RENT_COMP_LIBRARY[k]['address']}"
+        for k in dict.fromkeys(p["rent_comps"]))
+    sized = [k for k in dict.fromkeys(p["rent_comps"]) if RENT_COMP_SIZES.get(k)]
+    far = max(rc["distance"] for rc in rent_comps)
+
     rent_narrative = [
         "Pro forma rents are set at the highest rent actually achieved at this property for each "
         "unit type on the June 2026 rent roll. They are floors supported by signed leases in the "
         "building, not projections.",
-        "Current asking rents at nearby properties, accessed August 4, 2026, sit above those "
-        "floors on every unit type. The one bedroom asking cluster runs $1,475 to $1,590 and the "
-        "conventional two bedroom cluster runs $1,560 to $1,850. Those are advertised rents, not "
-        "signed leases, and are shown as sensitivity only.",
-        "The properties in the table are Carmel Apartments at 38722 11th Street East, a 112 unit "
-        "1984 community with a pool and gated parking; Colonial Terrace at 38719 10th Street "
-        "East, 51 units built in 1986, advertising an 800 square foot two bedroom; Shadow Springs "
-        "at 38110 5th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 "
-        "E Avenue R; and two individual listings, an 850 square foot one bedroom on 10th Place "
-        "East and a 950 square foot two bedroom on 11th Street East. Unit sizes read as a dash in "
-        "the table because only three of the nine listings publish one, and an average struck on "
-        "three of nine would misstate the set. Carmel is advertising one month free on selected "
-        "two and three bedroom units, which indicates some concession pressure at the top of the "
-        "range.",
+        f"The {len(rent_comps)} current asking rents in the table below were accessed on "
+        f"August 4, 2026 and sit above those floors: {spread}. Distances are straight line from "
+        f"this building to each comparable, computed from the same approved coordinates the map "
+        f"is drawn from, and no comparable in the set is more than {far:.2f} miles away. These "
+        f"are advertised rents rather than signed leases and are shown as market sensitivity "
+        f"only.",
+        f"The properties shown are {named}. "
+        + (f"Of these, {len(sized)} publish a unit size: "
+           + ", ".join(f"{RENT_COMP_NAMES[k]} at {RENT_COMP_SIZES[k]:,} square feet"
+                       for k in sized)
+           + ". The size column reads as a dash because an average struck on "
+             f"{len(sized)} of {len(rent_comps)} rows would misstate the set."
+           if sized else
+           "None of them publishes a unit size, so the size column reads as a dash rather than "
+           "carrying an average struck on partial data.")
+        + (" Carmel Apartments is advertising one month free on selected two and three bedroom "
+           "units, which indicates some concession pressure at the top of the range."
+           if any(k.startswith("carmel") for k in p["rent_comps"]) else ""),
         "The owner's stated market rent column in this building's rent roll sits below rents the "
         "building is already achieving. That column is stale and was not used anywhere in this "
         "analysis.",
