@@ -174,6 +174,21 @@ def miles(a, b):
     return 2 * 3958.7613 * math.asin(math.sqrt(h))
 
 
+WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",
+         7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
+
+
+def and_list(items):
+    """Comma list ending in 'and'. A semicolon-joined run reads like a database
+    dump in a paragraph a client reads."""
+    items = list(items)
+    if len(items) <= 1:
+        return items[0] if items else ""
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return ", ".join(items[:-1]) + f", and {items[-1]}"
+
+
 def rent_bucket(unit_type):
     t = unit_type.split()[0].upper()
     return {"1BR": "one bedroom", "2BR": "two bedroom", "3BR": "three bedroom"}.get(t, t)
@@ -289,7 +304,7 @@ RENT_COMP_LIBRARY = {
 RENT_COMP_NAMES = {
     "carmel-1br": "Carmel Apartments", "carmel-2br2ba": "Carmel Apartments",
     "carmel-3br": "Carmel Apartments", "colonial": "Colonial Terrace",
-    "tenth-pl": "the 10th Place East listing", "eleventh-2br": "the 11th Street East listing",
+    "tenth-pl": "", "eleventh-2br": "",   # individually listed units, no community name
     "shadow-springs": "Shadow Springs", "mountain-shadows": "Mountain Shadows",
     "ridgeview": "Ridgeview Village",
 }
@@ -696,32 +711,39 @@ def build_property(p, un):
     buckets = {}
     for rc in rent_comps:
         buckets.setdefault(rent_bucket(rc["unit_type"]), []).append(rc["rent"])
-    spread = "; ".join(
+    spread = and_list(
         f"{b} asks run ${min(v):,} to ${max(v):,}" if min(v) != max(v)
         else f"the {b} ask is ${min(v):,}"
         for b, v in buckets.items())
-    named = "; ".join(
-        f"{RENT_COMP_NAMES[k]} at {RENT_COMP_LIBRARY[k]['address']}"
-        for k in dict.fromkeys(p["rent_comps"]))
-    sized = [k for k in dict.fromkeys(p["rent_comps"]) if RENT_COMP_SIZES.get(k)]
+    # Dedupe by ADDRESS, not by comp key: Carmel contributes three rows under
+    # three keys, and keying the list produced "Carmel Apartments at 38722 11th
+    # Street East" three times in one sentence.
+    by_addr = {}
+    for k in p["rent_comps"]:
+        by_addr.setdefault(RENT_COMP_LIBRARY[k]["address"], k)
+    named = and_list([
+        (f"{RENT_COMP_NAMES[k]} at {addr}" if RENT_COMP_NAMES[k]
+         else f"an individually listed unit at {addr}")
+        for addr, k in by_addr.items()])
+    sized = [k for k in by_addr.values() if RENT_COMP_SIZES.get(k)]
     far = max(rc["distance"] for rc in rent_comps)
 
     rent_narrative = [
         "Pro forma rents are set at the highest rent actually achieved at this property for each "
         "unit type on the June 2026 rent roll. They are floors supported by signed leases in the "
         "building, not projections.",
-        f"The {len(rent_comps)} current asking rents in the table below were accessed on "
-        f"August 4, 2026 and sit above those floors: {spread}. Distances are straight line from "
-        f"this building to each comparable, computed from the same approved coordinates the map "
-        f"is drawn from, and no comparable in the set is more than {far:.2f} miles away. These "
-        f"are advertised rents rather than signed leases and are shown as market sensitivity "
-        f"only.",
+        f"{WORDS[len(rent_comps)]} current asking rents in the table were accessed on August 4, "
+        f"2026, and they sit above those floors: {spread}. Distances are straight line from this "
+        f"building to each comparable, computed from the same approved coordinates the map is "
+        f"drawn from, and no comparable in the set is more than {far:.2f} miles away. These are "
+        f"advertised rents rather than signed leases and are shown as market sensitivity only.",
         f"The properties shown are {named}. "
-        + (f"Of these, {len(sized)} publish a unit size: "
-           + ", ".join(f"{RENT_COMP_NAMES[k]} at {RENT_COMP_SIZES[k]:,} square feet"
+        + ((("One of them publishes a unit size, "
+             if len(sized) == 1 else f"{WORDS[len(sized)]} of them publish a unit size, ")
+            + and_list(f"{RENT_COMP_LIBRARY[k]['address']} at {RENT_COMP_SIZES[k]:,} square feet"
                        for k in sized)
-           + ". The size column reads as a dash because an average struck on "
-             f"{len(sized)} of {len(rent_comps)} rows would misstate the set."
+            + f". The size column reads as a dash because an average struck on "
+              f"{len(sized)} of {len(rent_comps)} rows would misstate the set.")
            if sized else
            "None of them publishes a unit size, so the size column reads as a dash rather than "
            "carrying an average struck on partial data.")

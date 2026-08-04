@@ -352,8 +352,8 @@
       ],
       "rent_narrative": [
         "Pro forma rents are set at the highest rent actually achieved at this property for each unit type on the June 2026 rent roll. They are floors supported by signed leases in the building, not projections.",
-        "The 4 current asking rents in the table below were accessed on August 4, 2026 and sit above those floors: one bedroom asks run $1,475 to $1,550. Distances are straight line from this building to each comparable, computed from the same approved coordinates the map is drawn from, and no comparable in the set is more than 2.13 miles away. These are advertised rents rather than signed leases and are shown as market sensitivity only.",
-        "The properties shown are the 10th Place East listing at 38572 10th Place East; Carmel Apartments at 38722 11th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 E Avenue R. Of these, 1 publish a unit size: the 10th Place East listing at 850 square feet. The size column reads as a dash because an average struck on 1 of 4 rows would misstate the set. Carmel Apartments is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
+        "Four current asking rents in the table were accessed on August 4, 2026, and they sit above those floors: one bedroom asks run $1,475 to $1,550. Distances are straight line from this building to each comparable, computed from the same approved coordinates the map is drawn from, and no comparable in the set is more than 2.13 miles away. These are advertised rents rather than signed leases and are shown as market sensitivity only.",
+        "The properties shown are an individually listed unit at 38572 10th Place East, Carmel Apartments at 38722 11th Street East, Mountain Shadows at 1240 E Avenue S, and Ridgeview Village at 200 E Avenue R. One of them publishes a unit size, 38572 10th Place East at 850 square feet. The size column reads as a dash because an average struck on 1 of 4 rows would misstate the set. Carmel Apartments is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
         "The owner's stated market rent column in this building's rent roll sits below rents the building is already achieving. That column is stale and was not used anywhere in this analysis."
       ],
       "valuation_narrative": [
@@ -581,7 +581,7 @@
   ],
   "stats": {
     "live": true,
-    "generated": "2026-08-04T23:04:18+00:00",
+    "generated": "2026-08-04T23:12:43+00:00",
     "geography": {
       "states": 21,
       "has_dc": true,
