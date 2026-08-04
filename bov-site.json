@@ -117,8 +117,8 @@
         32450
       ],
       "monthly_sgi": [
-        29806,
-        32450
+        30051,
+        32695
       ],
       "additional_income": [
         245,
@@ -147,8 +147,8 @@
       ],
       "operating": {
         "sgi": [
-          357672,
-          389400
+          360615,
+          392343
         ],
         "vacancy": [
           21460,
@@ -267,23 +267,47 @@
       "expense_notes": {
         "1": [
           "Property Tax",
-          "Reassessed at the value conclusion using the effective rate observed on recently reassessed Palmdale sales in the same tax rate area, not the Los Angeles County default."
+          "Reassessed at the value conclusion using the effective rate observed on recently reassessed Palmdale sales in the same tax rate area, not the Los Angeles County default. Direct assessments carried on the current bill are inside this figure."
         ],
         "2": [
           "Insurance",
           "$1,325 per unit, earthquake coverage excluded. The owner's trailing twelve month premiums across the five properties average $1,329 per unit, so this reflects documented cost rather than a broker estimate."
         ],
+        "3": [
+          "Utilities",
+          "The owner's trailing twelve month actuals for the utilities this ownership pays, carried forward without adjustment. Tenant-paid utilities are not added back."
+        ],
+        "4": [
+          "Repairs & Maintenance",
+          "A transferable allowance of $725 per unit, or $800 at the 1971 asset. It replaces the seller's maintenance payroll, contract labor, painting, supplies and turnover accounts, which are structured around a portfolio maintenance crew a buyer does not acquire."
+        ],
+        "5": [
+          "Management Fee",
+          "4% of gross scheduled rent, the LAAA standard for third-party management at this size. The seller's own management company fee and office payroll are removed rather than carried alongside it."
+        ],
         "6": [
           "On-Site Manager Rent Credit",
           "California requires a manager residing on site at buildings of 16 or more units. The manager unit is carried at market rent in gross scheduled rent and the credit is shown as a separate expense. It is never folded into the management fee."
+        ],
+        "7": [
+          "Landscaping, Pest & Life Safety",
+          "The owner's trailing twelve month actuals for landscaping, pest control, fire extinguisher service and security, which transfer with the property."
         ],
         "8": [
           "Pool Service",
           "$100 per unit where the trailing twelve month statement carries pool service spend. Where there is no pool the line is zero."
         ],
+        "9": [
+          "Administrative",
+          "$100 per unit, or $75 at the 76 unit asset. It consolidates accounting, routine legal, bank charges, licensing and office costs into one transferable figure."
+        ],
         "10": [
           "Marketing & Advertising",
           "Underwritten at zero. Each property is at or above 90% occupancy on the June 2026 rent roll and leases on organic demand. A buyer running a lease-up would carry a marketing budget."
+        ],
+        "11": [
+          "Reserves",
+          "A replacement reserve set per property against building age and condition. It is not an expense the seller currently books; it is underwritten because a buyer's lender will require it."
         ]
       },
       "financing": {
@@ -294,7 +318,7 @@
       },
       "highlights": [
         "22 units on a 1.03 acre site, built in 1986",
-        "13,188 gross building square feet, 599 square feet per unit",
+        "13,188 gross building square feet",
         "Operated as Vista Del Sol Apartments",
         "Every unit occupied or leased on the June 2026 rent roll basis used here",
         "Assessor parcel 3015-013-005, zoned PDR3, tax rate area 6-959",
@@ -329,8 +353,8 @@
       "rent_narrative": [
         "Pro forma rents are set at the highest rent actually achieved at this property for each unit type on the June 2026 rent roll. They are floors supported by signed leases in the building, not projections.",
         "Current asking rents at nearby properties, accessed August 4, 2026, sit above those floors on every unit type. The one bedroom asking cluster runs $1,475 to $1,590 and the conventional two bedroom cluster runs $1,560 to $1,850. Those are advertised rents, not signed leases, and are shown as sensitivity only.",
-        "The properties in the table are Carmel Apartments at 38722 11th Street East, a 112 unit 1984 community with a pool and gated parking; Colonial Terrace at 38719 10th Street East, 51 units built in 1986; Shadow Springs at 38110 5th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 E Avenue R; and two individual listings on 10th Place East and 11th Street East. Carmel is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
-        "The gap between the owner's stated market rent column and rents actually being achieved in the building is real on all five properties. The stated column is stale and was not used anywhere in this analysis."
+        "The properties in the table are Carmel Apartments at 38722 11th Street East, a 112 unit 1984 community with a pool and gated parking; Colonial Terrace at 38719 10th Street East, 51 units built in 1986, advertising an 800 square foot two bedroom; Shadow Springs at 38110 5th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 E Avenue R; and two individual listings, an 850 square foot one bedroom on 10th Place East and a 950 square foot two bedroom on 11th Street East. Unit sizes read as a dash in the table because only three of the nine listings publish one, and an average struck on three of nine would misstate the set. Carmel is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
+        "The owner's stated market rent column in this building's rent roll sits below rents the building is already achieving. That column is stale and was not used anywhere in this analysis."
       ],
       "valuation_narrative": [
         "Value is concluded from verified price per unit and price per square foot. That is a deliberate choice. None of the six comparable sales comes with an offering memorandum or a verified operating statement, so any cap rate attached to them would be a broker reported figure rather than a measured one. Commercial data services routinely carry a list price marketing cap onto a closed record and derive the income from it, which makes the arithmetic self-consistent and the conclusion meaningless.",
@@ -403,7 +427,7 @@
           "address": "38572 10th Place East",
           "unit_type": "1BR 1BA",
           "rent": 1525,
-          "square_feet": 850,
+          "square_feet": null,
           "distance": 0.3,
           "image": null
         },
@@ -556,7 +580,7 @@
   ],
   "stats": {
     "live": true,
-    "generated": "2026-08-04T22:21:47+00:00",
+    "generated": "2026-08-04T22:53:09+00:00",
     "geography": {
       "states": 21,
       "has_dc": true,

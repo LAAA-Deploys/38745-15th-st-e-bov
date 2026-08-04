@@ -221,6 +221,13 @@ SALE_COMPS = [
 # Street East" string made the address column 6.3x the width of the narrowest
 # column and failed audit_tables LOPSIDED at 390px and 768px. The community names
 # are named in the rent narrative instead, where prose has room for them.
+#
+# square_feet is None on every row, deliberately. Only three of the nine listings
+# publish a unit size, and the renderer averages a column over the rows that
+# carry a value: with one of four rows populated it printed "850" under a header
+# reading "Average (4 rent comps)", which is a false average on a client-facing
+# page. Either every row carries a size or none does. The three published sizes
+# are stated in the rent narrative instead, where they can be attributed.
 RENT_COMP_LIBRARY = {
     "carmel-1br": {"key": "38722 11th St E, Palmdale, CA 93550",
                    "address": "38722 11th Street East",
@@ -233,13 +240,13 @@ RENT_COMP_LIBRARY = {
                    "unit_type": "3BR 2BA", "rent": 2150, "square_feet": None, "distance": 0.5},
     "colonial": {"key": "38719 10th St E, Palmdale, CA 93550",
                  "address": "38719 10th Street East",
-                 "unit_type": "2BR 1BA", "rent": 1650, "square_feet": 800, "distance": 0.4},
+                 "unit_type": "2BR 1BA", "rent": 1650, "square_feet": None, "distance": 0.4},
     "tenth-pl": {"key": "38572 10th Pl E, Palmdale, CA 93550",
                  "address": "38572 10th Place East", "unit_type": "1BR 1BA",
-                 "rent": 1525, "square_feet": 850, "distance": 0.3},
+                 "rent": 1525, "square_feet": None, "distance": 0.3},
     "eleventh-2br": {"key": "38551 11th St E, Palmdale, CA 93550",
                      "address": "38551 11th Street East", "unit_type": "2BR 1BA",
-                     "rent": 1850, "square_feet": 950, "distance": 0.3},
+                     "rent": 1850, "square_feet": None, "distance": 0.3},
     "shadow-springs": {"key": "38110 5th St E, Palmdale, CA 93550",
                        "address": "38110 5th Street East", "unit_type": "2BR",
                        "rent": 1625, "square_feet": None, "distance": 0.7},
@@ -303,23 +310,49 @@ def build_expense_lines(price, tax_rate, sc, insurance, reserves, pool, admin):
     return tax, lines
 
 
+# Every expense line carries a note. The renderer prints a superscript for each
+# line that has a reference index and then prints only the notes that exist, so a
+# partial set published [3] [4] [5] [7] [9] [11] on the page with nothing to read
+# under them. A reference with no definition is worse than no reference.
 EXPENSE_NOTES = {
     "1": ["Property Tax", "Reassessed at the value conclusion using the effective rate observed "
                           "on recently reassessed Palmdale sales in the same tax rate area, not "
-                          "the Los Angeles County default."],
+                          "the Los Angeles County default. Direct assessments carried on the "
+                          "current bill are inside this figure."],
     "2": ["Insurance", "$1,325 per unit, earthquake coverage excluded. The owner's trailing "
                        "twelve month premiums across the five properties average $1,329 per unit, "
                        "so this reflects documented cost rather than a broker estimate."],
+    "3": ["Utilities", "The owner's trailing twelve month actuals for the utilities this "
+                       "ownership pays, carried forward without adjustment. Tenant-paid utilities "
+                       "are not added back."],
+    "4": ["Repairs & Maintenance", "A transferable allowance of $725 per unit, or $800 at the "
+                                   "1971 asset. It replaces the seller's maintenance payroll, "
+                                   "contract labor, painting, supplies and turnover accounts, "
+                                   "which are structured around a portfolio maintenance crew a "
+                                   "buyer does not acquire."],
+    "5": ["Management Fee", "4% of gross scheduled rent, the LAAA standard for third-party "
+                            "management at this size. The seller's own management company fee "
+                            "and office payroll are removed rather than carried alongside it."],
     "6": ["On-Site Manager Rent Credit",
           "California requires a manager residing on site at buildings of 16 or more units. The "
           "manager unit is carried at market rent in gross scheduled rent and the credit is shown "
           "as a separate expense. It is never folded into the management fee."],
+    "7": ["Landscaping, Pest & Life Safety", "The owner's trailing twelve month actuals for "
+                                             "landscaping, pest control, fire extinguisher "
+                                             "service and security, which transfer with the "
+                                             "property."],
     "8": ["Pool Service", "$100 per unit where the trailing twelve month statement carries pool "
                           "service spend. Where there is no pool the line is zero."],
+    "9": ["Administrative", "$100 per unit, or $75 at the 76 unit asset. It consolidates "
+                            "accounting, routine legal, bank charges, licensing and office costs "
+                            "into one transferable figure."],
     "10": ["Marketing & Advertising",
            "Underwritten at zero. Each property is at or above 90% occupancy on the June 2026 "
            "rent roll and leases on organic demand. A buyer running a lease-up would carry a "
            "marketing budget."],
+    "11": ["Reserves", "A replacement reserve set per property against building age and "
+                       "condition. It is not an expense the seller currently books; it is "
+                       "underwritten because a buyer's lender will require it."],
 }
 
 
@@ -503,10 +536,14 @@ def build_property(p, un):
     pool_txt = "a pool" if p["pool_yes"] else "no pool"
     laundry_txt = "on-site laundry" if p["laundry"] else "no common laundry"
 
+    # No derived square-feet-per-unit line. The gross figure divided by the unit
+    # count (824 at 38050) and the bedroom-weighted unit-mix allocation (825)
+    # disagree by a square foot or two, and printing both on one page invites a
+    # seller to ask which is right. Gross area is in the cover stats and unit
+    # sizes are in the unit mix; the quotient adds nothing and can only conflict.
     highlights = [
         f"{p['units']} units on a {p['lot_sf'] / 43560:.2f} acre site, built in {p['year_built']}",
-        f"{p['building_sf']:,} gross building square feet, {p['building_sf'] // p['units']:,} "
-        f"square feet per unit",
+        f"{p['building_sf']:,} gross building square feet",
         f"Operated as {p['public_name']}",
         "Every unit occupied or leased on the June 2026 rent roll basis used here",
     ]
@@ -601,14 +638,17 @@ def build_property(p, un):
         "signed leases, and are shown as sensitivity only.",
         "The properties in the table are Carmel Apartments at 38722 11th Street East, a 112 unit "
         "1984 community with a pool and gated parking; Colonial Terrace at 38719 10th Street "
-        "East, 51 units built in 1986; Shadow Springs at 38110 5th Street East; Mountain Shadows "
-        "at 1240 E Avenue S; Ridgeview Village at 200 E Avenue R; and two individual listings on "
-        "10th Place East and 11th Street East. Carmel is advertising one month free on selected "
+        "East, 51 units built in 1986, advertising an 800 square foot two bedroom; Shadow Springs "
+        "at 38110 5th Street East; Mountain Shadows at 1240 E Avenue S; Ridgeview Village at 200 "
+        "E Avenue R; and two individual listings, an 850 square foot one bedroom on 10th Place "
+        "East and a 950 square foot two bedroom on 11th Street East. Unit sizes read as a dash in "
+        "the table because only three of the nine listings publish one, and an average struck on "
+        "three of nine would misstate the set. Carmel is advertising one month free on selected "
         "two and three bedroom units, which indicates some concession pressure at the top of the "
         "range.",
-        "The gap between the owner's stated market rent column and rents actually being achieved "
-        "in the building is real on all five properties. The stated column is stale and was not "
-        "used anywhere in this analysis.",
+        "The owner's stated market rent column in this building's rent roll sits below rents the "
+        "building is already achieving. That column is stale and was not used anywhere in this "
+        "analysis.",
     ]
 
     valuation_narrative = [
@@ -666,7 +706,13 @@ def build_property(p, un):
         "price": price, "price_per_unit": money_round(ppu), "price_per_sf": round(ppsf, 2),
         "value_range": f"${p['low']:,} to ${p['high']:,}",
         "scheduled_rent": [money_round(gsr_c / 12), money_round(gsr_m / 12)],
-        "monthly_sgi": [money_round(gsr_c / 12), money_round(gsr_m / 12)],
+        # Scheduled GROSS income is rent plus other income. It rendered as a
+        # repeat of Total Scheduled Rent directly under an Additional Income row,
+        # which silently dropped that row from the total a reader adds up. Struck
+        # from the same rounded components the two rows above it display, so the
+        # column literally sums on the page.
+        "monthly_sgi": [money_round(gsr_c / 12) + money_round(oi / 12),
+                        money_round(gsr_m / 12) + money_round(oi / 12)],
         "additional_income": [money_round(oi / 12), money_round(oi / 12)],
         "grm_current": round(grm_c, 2), "grm_market": round(grm_m, 2),
         "cap_current": round(cap_c, 2), "cap_market": round(cap_m, 2),
@@ -676,7 +722,12 @@ def build_property(p, un):
         "expense_per_sf": round(exp_c / p["building_sf"], 2),
         "unit_mix": mix,
         "operating": {
-            "sgi": [money_round(gsr_c), money_round(gsr_m)],
+            # Same fix in the annual table, where the chain reads
+            # Scheduled Gross Income - Vacancy = Gross Operating Income with no
+            # other-income row between them. Rent alone made that subtraction
+            # visibly wrong by the amount of the other income. GRM still divides
+            # by scheduled RENT, never by this figure.
+            "sgi": [money_round(gsr_c + oi), money_round(gsr_m + oi)],
             "vacancy": [money_round(vac_c + cred_c), money_round(vac_m + cred_m)],
             "vacancy_pct": round(vac_pct + cl_pct, 1),
             "goi": [money_round(egi_c), money_round(egi_m)],
