@@ -1,0 +1,145 @@
+{
+  "entries": [
+    {
+      "property": "38745-15th-st-e",
+      "category": "subject",
+      "lat": 34.5865653,
+      "lng": -118.1034116,
+      "place_id": "ChIJ7aeS94RXwoAR3igTeD3nRCQ",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "sold",
+      "order": 1,
+      "lat": 34.585164,
+      "lng": -118.12221709999999,
+      "place_id": "ChIJjZclvy1YwoARHqohEa7PS_Q",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "sold",
+      "order": 2,
+      "lat": 34.5730198,
+      "lng": -118.10614129999998,
+      "place_id": "ChIJPSu_qIxXwoARfAAxCXtCSdw",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "sold",
+      "order": 3,
+      "lat": 34.573049999999995,
+      "lng": -118.1128598,
+      "place_id": "ChIJ1yuHfCBYwoARuedEADMrBmQ",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "sold",
+      "order": 4,
+      "lat": 34.572983900000004,
+      "lng": -118.1039787,
+      "place_id": "ChIJX94U04xXwoARqLm3jna0hmE",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "sold",
+      "order": 5,
+      "lat": 34.6596908,
+      "lng": -118.2050332,
+      "place_id": "ChIJD-CqTX1bwoAR-MotJLixNt0",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "sold",
+      "order": 6,
+      "lat": 34.6523243,
+      "lng": -118.21775720000001,
+      "place_id": "ChIJG6ctWY9cwoARSQxFrVdW-WE",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "rent",
+      "order": 1,
+      "lat": 34.583633999999996,
+      "lng": -118.1104859,
+      "place_id": "ChIJ2yaCpIdXwoARUwI227OxF6g",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "rent",
+      "order": 2,
+      "lat": 34.585735199999995,
+      "lng": -118.10954910000001,
+      "place_id": "ChIJU1lW2IZXwoARW87u0jiJdNs",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "rent",
+      "order": 3,
+      "lat": 34.5557298,
+      "lng": -118.10422100000001,
+      "place_id": "ChIJtfQFdPxXwoAR6le7xfHoE3I",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "rent",
+      "order": 4,
+      "lat": 34.5708341,
+      "lng": -118.12666340000001,
+      "place_id": "ChIJ49-c9jxYwoARzk95GoY7fF0",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "active",
+      "order": 1,
+      "lat": 34.5746818,
+      "lng": -118.1198429,
+      "place_id": "ChIJF-eG8wNZwoARwRlq8CDCMYg",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    },
+    {
+      "property": "38745-15th-st-e",
+      "category": "active",
+      "order": 2,
+      "lat": 34.5762576,
+      "lng": -118.11435820000001,
+      "place_id": "ChIJy707ZeVZwoARHOUN1-4IpSU",
+      "precision": "ROOFTOP",
+      "needs_review": false
+    }
+  ],
+  "renders": {
+    "images/maps-portfolio-subjects.png": "d8bdd1f80d6a8a1d74ce8008af9a5ffc2e88f7373d3aa239545dff7cb1c50076",
+    "images/maps-portfolio-subjects-tall.png": "2a73f9a1409af027af24aaa80a3913509c0ca6c1efb141a6d9143c42e53d8a60",
+    "images/maps-38745-15th-st-e-subject.png": "3f875cad1d2445b769e7cb813816d4d74cc275cce75bbd730644c3d0a834717e",
+    "images/maps-38745-15th-st-e-subject-tall.png": "88142d27d5cbb2d9e643e354b38624092c269d6b6c163abb3d12c1d6def783db",
+    "images/maps-38745-15th-st-e-sale-comps.png": "c025eec5e23cf0e4806f51b9de927a72ed06317aac28c792c3c504d74127d0a7",
+    "images/maps-38745-15th-st-e-sale-comps-tall.png": "2212586b963e0c9af228c012c94d72b9f291281cc5a179de8fb6bf88fc97ff85",
+    "images/maps-38745-15th-st-e-rent-comps.png": "74200fc259a6c046a9ffe345efcfa213b7f1369aa0079c3420d9b3538ff77567",
+    "images/maps-38745-15th-st-e-rent-comps-tall.png": "1ebf82c8b86674768de3cb38a62846ebf07f1004962dbefce1677fcb83703e77",
+    "images/maps-38745-15th-st-e-active-comps.png": "9cf3768414a98e7d9e34d1f28db3afdc4055b99f838fcadb4bc34902876835e7",
+    "images/maps-38745-15th-st-e-active-comps-tall.png": "f0cce63e9604ec4f754ddc74149c44ba348ac04556e026082af5457dad59fd53"
+  }
+}

@@ -1,0 +1,619 @@
+{
+  "schema_version": 2,
+  "document_type": "bov",
+  "site_mode": "single",
+  "meta": {
+    "domain": "38745-15th-st-e.laaa.com",
+    "client": "Elizabeth Gould",
+    "title": "38745 15th Street East",
+    "subtitle": "22-Unit Multifamily Investment",
+    "month_year": "August 2026",
+    "hero": "images/38745-15th-st-e-hero.jpg"
+  },
+  "team": {
+    "leads": [
+      {
+        "name": "Glen Scher",
+        "title": "Senior Managing Director Investments",
+        "phone": "(818) 212-2808",
+        "tel": "8182122808",
+        "email": "Glen.Scher@marcusmillichap.com",
+        "license": "CA License: 01962976",
+        "headshot": "images/team-Glen_Scher.png",
+        "bio": "Glen Scher co-leads LA Apartment Advisors and advises apartment owners across Los Angeles County and the Antelope Valley on pricing, positioning and execution."
+      },
+      {
+        "name": "Filip Niculete",
+        "title": "Senior Managing Director Investments",
+        "phone": "(818) 212-2748",
+        "tel": "8182122748",
+        "email": "Filip.Niculete@marcusmillichap.com",
+        "license": "CA License: 01905352",
+        "headshot": "images/team-Filip_Niculete.png",
+        "bio": "Filip Niculete co-leads LA Apartment Advisors with a focus on disciplined marketing, buyer coverage and closing certainty on multifamily assignments."
+      },
+      {
+        "name": "Blake Lewitt",
+        "title": "Associate Investments",
+        "phone": "(818) 212-2813",
+        "tel": "8182122813",
+        "email": "Blake.Lewitt@marcusmillichap.com",
+        "license": "CA License: 02363670",
+        "headshot": "images/team-Blake_Lewitt.png",
+        "bio": "Blake Lewitt covers apartment ownership in the San Fernando Valley and the Antelope Valley and originated this assignment."
+      }
+    ],
+    "grid": []
+  },
+  "track_record": {
+    "metrics": [
+      [
+        "{closed}",
+        "Closed Transactions"
+      ],
+      [
+        "{volume}",
+        "Total Sales Volume"
+      ],
+      [
+        "{apt_units}",
+        "Apartment Units Sold"
+      ]
+    ],
+    "narrative": [
+      "The LAAA Team has closed {closed} transactions totaling {volume} across {geo}, including {apt_closed} apartment sales covering {apt_units} units.",
+      "That record is built on the same discipline applied here: verified rent rolls and operating statements, comparable sales confirmed against recorded deeds rather than aggregator data, and a value conclusion a buyer's lender can follow."
+    ],
+    "achievements": [],
+    "press": []
+  },
+  "marketing": {
+    "metrics": [
+      [
+        "{subscribers}",
+        "Active Email Subscribers"
+      ]
+    ],
+    "channels": [
+      [
+        "Direct owner and buyer outreach",
+        "Named calls into the Antelope Valley buyer pool, the 1031 exchange buyers who have traded in this size class, and the private capital already holding product in Palmdale."
+      ],
+      [
+        "Marcus & Millichap platform",
+        "National listing distribution, the firm's investor database, and coordination with MMCC on debt terms so a buyer arrives pre-qualified rather than exploring."
+      ],
+      [
+        "Dedicated digital presentation",
+        "A property-specific offering site, targeted email, and syndication to the platforms Antelope Valley buyers actually search."
+      ]
+    ],
+    "narrative": [
+      "The buyer pool for a Palmdale apartment building at this size is narrow and identifiable. Recent closings in the submarket went to two groups: a regional operator buying on yield, and local private capital paying a premium for a clean, stabilized asset. A campaign has to reach both, because they price differently.",
+      "Marketing begins only after the value conclusion is agreed. Nothing in this report has been distributed."
+    ]
+  },
+  "properties": [
+    {
+      "slug": "38745-15th-st-e",
+      "short_name": "38745 15th Street East",
+      "address": "38745 15th Street East",
+      "city": "Palmdale, CA 93550",
+      "submarket": "East Palmdale",
+      "apn": "3015-013-005",
+      "units": 22,
+      "building_sf": 13188,
+      "lot_sf": 44999,
+      "lot_acres": 1.033,
+      "year_built": 1986,
+      "parking": "Eleven enclosed garages plus open on-site parking on a 1.03 acre corner lot",
+      "hero": "images/38745-15th-st-e-hero.jpg",
+      "price": 2800000,
+      "price_per_unit": 127273,
+      "price_per_sf": 212.31,
+      "value_range": "$2,650,000 to $2,900,000",
+      "scheduled_rent": [
+        29806,
+        32450
+      ],
+      "monthly_sgi": [
+        30051,
+        32695
+      ],
+      "additional_income": [
+        245,
+        245
+      ],
+      "grm_current": 7.83,
+      "grm_market": 7.19,
+      "cap_current": 6.42,
+      "cap_market": 7.44,
+      "noi_current": 179654,
+      "noi_market": 208209,
+      "tax_rate": 1.69,
+      "expense_total": 159498,
+      "expense_per_unit": 7250,
+      "expense_per_sf": 12.09,
+      "unit_mix": [
+        {
+          "type": "1BR / 1BA",
+          "count": 22,
+          "monthly_current": 29806,
+          "rent_current": 1355,
+          "rent_market": 1475,
+          "monthly_market": 32450,
+          "sf": 599
+        }
+      ],
+      "operating": {
+        "sgi": [
+          360612,
+          392340
+        ],
+        "vacancy": [
+          21460,
+          23364
+        ],
+        "vacancy_pct": 6.0,
+        "goi": [
+          339152,
+          368976
+        ],
+        "expenses": [
+          159498,
+          160767
+        ],
+        "expense_ratio": [
+          47.0,
+          43.6
+        ],
+        "noi": [
+          179654,
+          208209
+        ],
+        "loan_payments": [
+          -115593,
+          -115593
+        ],
+        "pretax_cf": [
+          64060,
+          92616
+        ],
+        "pretax_cf_pct": [
+          5.08,
+          7.35
+        ],
+        "principal_reduction": [
+          17542,
+          17542
+        ],
+        "total_return": [
+          81602,
+          110158
+        ],
+        "total_return_pct": [
+          6.48,
+          8.74
+        ]
+      },
+      "expense_lines": [
+        [
+          "Property Tax",
+          47320,
+          47320,
+          1
+        ],
+        [
+          "Insurance",
+          29150,
+          29150,
+          2
+        ],
+        [
+          "Utilities",
+          20688,
+          20688,
+          3
+        ],
+        [
+          "Repairs & Maintenance",
+          15950,
+          15950,
+          4
+        ],
+        [
+          "Management Fee",
+          14307,
+          15576,
+          5
+        ],
+        [
+          "On-Site Manager Rent Credit",
+          17700,
+          17700,
+          6
+        ],
+        [
+          "Landscaping, Pest & Life Safety",
+          6683,
+          6683,
+          7
+        ],
+        [
+          "Pool Service",
+          0,
+          0,
+          8
+        ],
+        [
+          "Administrative",
+          2200,
+          2200,
+          9
+        ],
+        [
+          "Marketing & Advertising",
+          0,
+          0,
+          10
+        ],
+        [
+          "Reserves",
+          5500,
+          5500,
+          11
+        ]
+      ],
+      "expense_notes": {
+        "1": [
+          "Property Tax",
+          "Reassessed at the value conclusion using the effective rate observed on recently reassessed Palmdale sales in the same tax rate area, not the Los Angeles County default. Direct assessments carried on the current bill are inside this figure."
+        ],
+        "2": [
+          "Insurance",
+          "$1,325 per unit, earthquake coverage excluded. The owner's trailing twelve month premiums across the five properties average $1,329 per unit, so this reflects documented cost rather than a broker estimate."
+        ],
+        "3": [
+          "Utilities",
+          "The owner's trailing twelve month actuals for the utilities this ownership pays, carried forward without adjustment. Tenant-paid utilities are not added back."
+        ],
+        "4": [
+          "Repairs & Maintenance",
+          "A transferable allowance of $725 per unit, or $800 at the 1971 asset. It replaces the seller's maintenance payroll, contract labor, painting, supplies and turnover accounts, which are structured around a portfolio maintenance crew a buyer does not acquire."
+        ],
+        "5": [
+          "Management Fee",
+          "4% of gross scheduled rent, the LAAA standard for third-party management at this size. The seller's own management company fee and office payroll are removed rather than carried alongside it."
+        ],
+        "6": [
+          "On-Site Manager Rent Credit",
+          "California requires a manager residing on site at buildings of 16 or more units. The manager unit is carried at market rent in gross scheduled rent and the credit is shown as a separate expense. It is never folded into the management fee."
+        ],
+        "7": [
+          "Landscaping, Pest & Life Safety",
+          "The owner's trailing twelve month actuals for landscaping, pest control, fire extinguisher service and security, which transfer with the property."
+        ],
+        "8": [
+          "Pool Service",
+          "$100 per unit where the trailing twelve month statement carries pool service spend. Where there is no pool the line is zero."
+        ],
+        "9": [
+          "Administrative",
+          "$100 per unit, or $75 at the 76 unit asset. It consolidates accounting, routine legal, bank charges, licensing and office costs into one transferable figure."
+        ],
+        "10": [
+          "Marketing & Advertising",
+          "Underwritten at zero. Each property is at or above 90% occupancy on the June 2026 rent roll and leases on organic demand. A buyer running a lease-up would carry a marketing budget."
+        ],
+        "11": [
+          "Reserves",
+          "A replacement reserve set per property against building age and condition. It is not an expense the seller currently books; it is underwritten because a buyer's lender will require it."
+        ]
+      },
+      "financing": {
+        "loan_amount": 1540000,
+        "rate": 6.4,
+        "amortization": 30,
+        "dcr": 1.55
+      },
+      "highlights": [
+        "22 units on a 1.03 acre site, built in 1986",
+        "13,188 gross building square feet",
+        "Operated as Vista Del Sol Apartments",
+        "Every unit occupied or leased on the June 2026 rent roll basis used here",
+        "Assessor parcel 3015-013-005, zoned PDR3, tax rate area 6-959",
+        "FEMA Flood Zone X, outside the Special Flood Hazard Area, revalidated August 4, 2026",
+        "Not within an Alquist-Priolo Earthquake Fault Zone and no mapped fault trace within 500 metres, revalidated August 4, 2026"
+      ],
+      "overview": [
+        "Vista Del Sol Apartments at 38745 15th Street East is a 22 unit apartment property built in 1986 and held in the same family ownership since 2016. The building contains 13,188 gross square feet on 44,999 square feet of land, with no pool and no common laundry.",
+        "This report values the property on its own merits. It is one of five individual opinions of value prepared for the ownership and carries no portfolio assumption, no blended pricing and no requirement that any other asset transact.",
+        "The analysis rebuilds the operating statement on the basis a buyer would actually inherit. Ownership payroll and management company overhead come out, a 4% third-party management fee and the legally required resident manager credit go in, insurance is set at documented cost, and property tax is reassessed at the value conclusion. What remains is the income a new owner underwrites on day one."
+      ],
+      "location_title": "East Palmdale, the established rental core of the Antelope Valley",
+      "location_narrative": [
+        "The property sits in East Palmdale, the established rental core of the city, inside the Palmdale Elementary and Antelope Valley Union High School District attendance zones. Gateway Shopping Center is within roughly a mile and the Antelope Valley Mall, Palmdale Regional Medical Center and the Highway 14 corridor are a short drive.",
+        "Palmdale is an incorporated city, so Los Angeles City rent stabilization does not apply. Residential rents are governed by the statewide framework under AB 1482.",
+        "The 93550 ZIP code carries a population of roughly 81,500 with a median household income near $61,400. Renters occupy about 46% of households and the median gross rent is about $1,457, which places the in-place rents at this property in the working core of local demand rather than at the top of it."
+      ],
+      "physical_narrative": [
+        "The property is a two story wood frame apartment building of 13,188 gross square feet across 22 units. Eleven enclosed garages plus open on-site parking on a 1.03 acre corner lot.",
+        "Physical facts here come from the assessment record and current site photography published by the ownership's own management company, and from the June 2026 rent roll for the unit mix. Public amenity flags were not relied on. Where the public record and the operating statement disagree on an amenity, the operating statement governs, because a line of recurring spend is harder evidence than a flag in an assessment file.",
+        "A physical inspection, a roof and mechanical assessment, and a measured survey remain buyer diligence items. Nothing in this report substitutes for them."
+      ],
+      "market_narrative": [
+        "Six closed apartment sales in Palmdale and Quartz Hill survive verification against recorded deeds and assessment records. Their verified prices run from $110,000 to $182,353 per unit and from $115.80 to $200.36 per square foot. Four of the six closed in 2024 and two in 2025, and the most recent, in November 2025, carries the most weight on current conditions.",
+        "Eight further entries pulled in the same search were excluded and the reasons are on file: two affordable housing sales priced on an allocated portfolio basis, a senior conversion, a recreational vehicle park bought for battery storage land, a mobile home park, an undisclosed partnership interest transfer, a triplex portfolio, and one sale that a listing service had entered twice under two addresses.",
+        "Building areas reported by the commercial data service were wrong on three of seven apartment sales, by as much as 21%, and one entry described a triplex as an 18 unit building. Every figure in the table below was re-verified before it was used."
+      ],
+      "positioning_narrative": [
+        "Recent closings show two distinct buyers. A regional operator bought four of the six verified sales, financed at or near the full purchase price through a single lender relationship, and priced in a band of roughly $110,000 to $150,000 per unit. The two highest prices in the pool, at $161,111 and $182,353 per unit, went to local private buyers, one of them all cash.",
+        "That split is the whole marketing question. The yield buyer sets the floor and will transact quickly. The premium is paid by local private and exchange capital that wants a clean, stabilized building it does not have to fix."
+      ],
+      "rent_narrative": [
+        "Pro forma rents are set at the highest rent actually achieved at this property for each unit type on the June 2026 rent roll. They are floors supported by signed leases in the building, not projections.",
+        "Four current asking rents in the table were accessed on August 4, 2026, and they sit above those floors: one bedroom asks run $1,475 to $1,550. Distances are straight line from this building to each comparable, computed from the same approved coordinates the map is drawn from, and no comparable in the set is more than 2.13 miles away. These are advertised rents rather than signed leases and are shown as market sensitivity only.",
+        "The properties shown are an individually listed unit at 38572 10th Place East, Carmel Apartments at 38722 11th Street East, Mountain Shadows at 1240 E Avenue S, and Ridgeview Village at 200 E Avenue R. One of them publishes a unit size, 38572 10th Place East at 850 square feet. The size column reads as a dash because an average struck on 1 of 4 rows would misstate the set. Carmel Apartments is advertising one month free on selected two and three bedroom units, which indicates some concession pressure at the top of the range.",
+        "The owner's stated market rent column in this building's rent roll sits below rents the building is already achieving. That column is stale and was not used anywhere in this analysis."
+      ],
+      "valuation_narrative": [
+        "Value is concluded from verified price per unit and price per square foot. That is a deliberate choice. None of the six comparable sales comes with an offering memorandum or a verified operating statement, so any cap rate attached to them would be a broker reported figure rather than a measured one. Commercial data services routinely carry a list price marketing cap onto a closed record and derive the income from it, which makes the arithmetic self-consistent and the conclusion meaningless.",
+        "At $2.80M, the property prices at $127,273 per unit and $212.31 per square foot. The supporting evidence is C3 at 937 E Avenue R and C1 at 38633 Larkin Avenue.",
+        "The cap rate and gross rent multiplier shown in the summary are calculated from this report's own reconstructed operating statement at the concluded value, with property tax reassessed. They are cross-checks on the conclusion, not the basis for it."
+      ],
+      "strategy": [
+        {
+          "title": "Lead with verified operations",
+          "copy": "The June 2026 rent roll cross-foots to the printed totals to the dollar and the trailing twelve month statement reconciles line by line. Handing a buyer a reconciled package at launch removes the retrade that usually follows the first week of diligence."
+        },
+        {
+          "title": "Price to the local private buyer, not the yield buyer",
+          "copy": "The two highest verified prices per unit in this submarket were paid by local private capital, not by the regional operator that bought most of the volume. The campaign should reach that buyer first."
+        },
+        {
+          "title": "Show the reassessment honestly",
+          "copy": "Palmdale sales reassess at effective rates of 1.47% to 1.72%, not the 1.2% county shorthand. Underwriting the real number up front is what keeps a financing contingency from becoming a price reduction."
+        }
+      ],
+      "buyer_profiles": [
+        {
+          "title": "Local private and 1031 exchange capital",
+          "copy": "Antelope Valley owners and Los Angeles basin sellers trading into higher yield. This buyer paid the two highest verified prices per unit in the comparable set and values stabilized occupancy over renovation upside."
+        },
+        {
+          "title": "Regional multifamily operator",
+          "copy": "The buyer of four of the six verified comparable sales, financing through a single lender relationship and underwriting to a yield target. Sets the floor of the range and closes quickly."
+        },
+        {
+          "title": "Owner operator adding to a Palmdale footprint",
+          "copy": "A smaller private owner already managing in 93550, for whom another building within a few blocks carries genuine operating leverage."
+        }
+      ],
+      "disclosures": [
+        "This Broker Opinion of Value is an opinion prepared for the owner. It is not an appraisal and is not a guarantee of sale price.",
+        "Operating figures are drawn from the owner's June 2026 rent roll and the trailing twelve month statement for July 2025 through June 2026. Annual columns were used throughout; individual monthly cells in the scanned statements carry optical character recognition damage and were not relied on.",
+        "Expenses are presented on a buyer-normalized basis. Ownership payroll and management company overhead are replaced with a 4% third-party management fee, a separate resident manager rent credit required at 16 or more units in California, insurance at $1,325 per unit excluding earthquake coverage, and reserves. Property tax is reassessed at the value conclusion using effective rates observed on recently reassessed Palmdale sales, not the county default.",
+        "Unit square footages are an allocation of the assessor-verified gross building area across the rent roll unit mix, weighted by bedroom count. They are not a measured survey and will differ from advertised unit sizes.",
+        "Comparable sale prices, dates, unit counts and building areas were verified against recorded deeds and assessment records. Cap rates and gross rent multipliers reported by commercial data services on those sales were not independently verified and are deliberately excluded.",
+        "The collection loss line combines a 3% physical vacancy allowance with a credit loss allowance of 2% to 3% calibrated to this property's trailing delinquency. The operating table shows the two combined as a single reserve; it is not a 5% or 6% physical vacancy assumption.",
+        "Rent comparables reflect current public asking rents accessed on August 4, 2026. Asking rents are not signed leases and are shown as market sensitivity only. Distances are straight line from the subject, computed from the same approved rooftop coordinates used to render the maps, and are not driving distances.",
+        "Flood and earthquake fault findings were revalidated on August 4, 2026. Fire hazard severity, landslide susceptibility and environmental screening data were unavailable at that date and are not stated in this report."
+      ],
+      "gallery": [
+        {
+          "src": "images/38745-15th-st-e-photo-02.jpg",
+          "alt": "Lawn frontage and unit entries at 38745 15th Street East"
+        },
+        {
+          "src": "images/38745-15th-st-e-photo-03.jpg",
+          "alt": "Corner elevation at 38745 15th Street East"
+        },
+        {
+          "src": "images/38745-15th-st-e-photo-04.jpg",
+          "alt": "Enclosed garages at 38745 15th Street East"
+        },
+        {
+          "src": "images/38745-15th-st-e-photo-05.jpg",
+          "alt": "Garage row at 38745 15th Street East"
+        }
+      ],
+      "maps": {
+        "subject": "images/maps-38745-15th-st-e-subject.png",
+        "sale": "images/maps-38745-15th-st-e-sale-comps.png",
+        "rent": "images/maps-38745-15th-st-e-rent-comps.png",
+        "active": "images/maps-38745-15th-st-e-active-comps.png"
+      },
+      "rent_comps": [
+        {
+          "address": "38572 10th Place East",
+          "unit_type": "1BR 1BA",
+          "rent": 1525,
+          "square_feet": null,
+          "distance": 0.45,
+          "image": null
+        },
+        {
+          "address": "38722 11th Street East",
+          "unit_type": "1BR 1BA",
+          "rent": 1550,
+          "square_feet": null,
+          "distance": 0.35,
+          "image": null
+        },
+        {
+          "address": "1240 E Avenue S",
+          "unit_type": "1BR",
+          "rent": 1535,
+          "square_feet": null,
+          "distance": 2.13,
+          "image": null
+        },
+        {
+          "address": "200 E Avenue R",
+          "unit_type": "1BR",
+          "rent": 1475,
+          "square_feet": null,
+          "distance": 1.71,
+          "image": null
+        }
+      ],
+      "sale_comps": [
+        {
+          "address": "38633 Larkin Avenue, Palmdale",
+          "price": 2400000,
+          "units": 18,
+          "year_built": 1984,
+          "building_sf": 15266,
+          "lot_sf": 24829,
+          "date": "September 5, 2024",
+          "price_per_unit": 133333,
+          "price_per_sf": 157.21,
+          "summary": "Seven one-bedroom and eleven two-bedroom units in East Palmdale, sold out of a trust dissolution.",
+          "relevance": "The closest East Palmdale sale on vintage and unit profile.",
+          "considerations": "The building was 67% occupied at close with six vacant units, so the price reflects a distressed operating basis and sits at the low end of the range for a stabilized asset."
+        },
+        {
+          "address": "1241 E Avenue R, Palmdale",
+          "price": 2900000,
+          "units": 18,
+          "year_built": 1989,
+          "building_sf": 19840,
+          "lot_sf": 39204,
+          "date": "July 16, 2024",
+          "price_per_unit": 161111,
+          "price_per_sf": 146.17,
+          "summary": "An all two-bedroom, two-bath 1989 building with a pool, three blocks from the 11th Street assets.",
+          "relevance": "The closest product match in the pool on vintage, unit type and amenity, and it shares the same tax rate area as three of the subjects.",
+          "considerations": "An all-cash purchase by a local Palmdale buyer and a smaller asset, so the price per unit carries a small-lot premium."
+        },
+        {
+          "address": "937 E Avenue R, Palmdale",
+          "price": 4400000,
+          "units": 32,
+          "year_built": 1982,
+          "building_sf": 21960,
+          "lot_sf": 43560,
+          "date": "September 10, 2024",
+          "price_per_unit": 137500,
+          "price_per_sf": 200.36,
+          "summary": "A stabilized 32-unit, one-bedroom-weighted building in East Palmdale.",
+          "relevance": "The best scale and mix analog in the pool for the one-bedroom-weighted assets, and the highest verified price per square foot of any comparable.",
+          "considerations": "Smaller average units drive the price per square foot well above the pool median while the price per unit sits below it."
+        },
+        {
+          "address": "1341 E Avenue R, Palmdale",
+          "price": 3100000,
+          "units": 17,
+          "year_built": 1985,
+          "building_sf": 18527,
+          "lot_sf": 40946,
+          "date": "December 24, 2024",
+          "price_per_unit": 182353,
+          "price_per_sf": 167.32,
+          "summary": "Sixteen two-bedroom, two-bath townhome units plus one three-bedroom, in five buildings with attached garages.",
+          "relevance": "The price per unit ceiling of the verified pool and evidence of what local private capital pays for a superior product.",
+          "considerations": "Townhome product with attached garages is a materially better physical profile than any subject and should be read as a ceiling, not a target."
+        },
+        {
+          "address": "4136 W Avenue L, Quartz Hill",
+          "price": 2970000,
+          "units": 27,
+          "year_built": 1987,
+          "building_sf": 25648,
+          "lot_sf": 60984,
+          "date": "March 13, 2025",
+          "price_per_unit": 110000,
+          "price_per_sf": 115.8,
+          "summary": "An off-market 27-unit sale in Quartz Hill with deferred maintenance and four vacant units.",
+          "relevance": "The verified floor of the range and the reference point for what a buyer pays when condition and occupancy are impaired.",
+          "considerations": "Off-market, deferred maintenance, and rents described as well below market. Every metric on this sale carries a condition discount."
+        },
+        {
+          "address": "4840 W Avenue L8, Quartz Hill",
+          "price": 5100000,
+          "units": 34,
+          "year_built": 1985,
+          "building_sf": 27821,
+          "lot_sf": 68389,
+          "date": "November 21, 2025",
+          "price_per_unit": 150000,
+          "price_per_sf": 183.31,
+          "summary": "Ten one-bedroom and twenty-four two-bedroom units with a pool, and the most recent arm's length apartment sale in the Antelope Valley comparable set.",
+          "relevance": "The freshest transaction in the pool and the one carrying the most weight on current market conditions.",
+          "considerations": "A superior west-side Quartz Hill location and six vacant units at close. The location premium argues for pricing the East Palmdale assets below this price per unit."
+        }
+      ],
+      "active_comps": [
+        {
+          "address": "518 E Avenue Q-12, Palmdale",
+          "status": "Active",
+          "price": 5100000,
+          "units": 30,
+          "year_built": 1980,
+          "building_sf": 22000,
+          "lot_sf": 87120,
+          "date": "Listed July 6, 2026",
+          "price_per_unit": 170000,
+          "price_per_sf": 231.82,
+          "summary": "Pine Grove Casitas. Thirty units renovated in 2025 and offered at $5.1M, publicly listed as of August 4, 2026.",
+          "relevance": "The only current Palmdale offering close to the subject size class.",
+          "considerations": "Thirteen of thirty units, or 43%, were vacant at listing and the advertised return is a stabilization projection rather than current operations. The offering also includes development land. It is not clean pricing evidence without normalizing all three."
+        },
+        {
+          "address": "38225 9th Street East",
+          "status": "Active",
+          "price": 11250000,
+          "units": 31,
+          "year_built": 2026,
+          "building_sf": 46500,
+          "lot_sf": 108900,
+          "date": "Listed June 8, 2026",
+          "price_per_unit": 362903,
+          "price_per_sf": 241.94,
+          "summary": "Sierra Heights Townhomes. Thirty-one new two-bedroom, two-and-a-half-bath townhomes of about 1,500 square feet with garages, balconies and in-unit laundry, publicly listed as of August 4, 2026.",
+          "relevance": "Shows the ceiling of new construction pricing in the same submarket and the gap a buyer of existing product is buying below.",
+          "considerations": "Under construction and unoccupied. New construction at more than double the subject unit size is not an operating analog and its price per unit is not comparable."
+        }
+      ],
+      "map_points": [],
+      "track_record": {}
+    }
+  ],
+  "stats": {
+    "live": true,
+    "generated": "2026-08-04T23:12:43+00:00",
+    "geography": {
+      "states": 21,
+      "has_dc": true,
+      "label": "21 states and Washington, D.C.",
+      "outside_ca": 52,
+      "outside_ca_volume": 123903442
+    },
+    "sources": {
+      "track_record": "https://www.laaa.com/track-record",
+      "marketing": "https://www.laaa.com/; approved public reach claims"
+    },
+    "marketing": {
+      "source_mode": "public",
+      "active_email_subscribers": 23500,
+      "owner_investor_contacts": 36000,
+      "owners_buildings": 60000,
+      "buyer_calls": 100
+    },
+    "portfolio_track_record": {
+      "all": {
+        "count": 490,
+        "volume": 1545215958.5,
+        "units": 4679
+      },
+      "asset_class": {
+        "count": 340,
+        "volume": 1156335729.5,
+        "units": 4668
+      },
+      "asset_class_label": "Apartments",
+      "local": null,
+      "local_basis": null
+    }
+  }
+}
