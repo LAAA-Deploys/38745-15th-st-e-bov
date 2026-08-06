@@ -99,7 +99,29 @@ TRACK_RECORD = {
         "That record is built on the same discipline applied here: verified rent rolls and "
         "operating statements, comparable sales confirmed against recorded deeds rather than "
         "aggregator data, and a value conclusion a buyer's lender can follow."],
-    "achievements": [], "press": [],
+    # Copied verbatim from the locked Camarillo reference (Glen, 2026-08-06),
+    # which is approved published team content. Blake Lewitt reported both
+    # blocks rendering as bare headings on all five sites, because blocks.py
+    # emits the labels unconditionally and these lists were empty.
+    #
+    # Nothing here is invented, per hard rule 3. The one entry that carries a
+    # figure states a floor rather than a point value, so it cannot go stale in
+    # the wrong direction as the team closes more: today's live pull is 490
+    # closings and $1.55B against "490+" and "more than $1.5 billion", and both
+    # are all-asset-class, matching the metric card and the narrative on the
+    # same page. That denominator is the part Brio got wrong, not the "+".
+    #
+    # fill_copy() covers track_record["narrative"] and marketing["channels"]
+    # only, so a {closed} placeholder would render literally here. Extending it
+    # to these lists is a generator change and is not available under the pin.
+    "achievements": [
+        ["Chairman's Club", "Marcus & Millichap's top-tier annual honor"],
+        ["National Achievement Award", "multiple years, both partners"],
+        ["#1 Most Active Multifamily Team in LA County", "CoStar 2019-2021"],
+        ["Sales Recognition Award", "every year since 2016"],
+        ["490+ closed transactions", "more than $1.5 billion in sales volume"],
+    ],
+    "press": ["BISNOW", "YAHOO FINANCE", "CONNECT CRE", "SFVBJ", "THE PINNACLE LIST"],
 }
 
 MARKETING = {

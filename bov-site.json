@@ -64,8 +64,35 @@
       "The LAAA Team has closed {closed} transactions totaling {volume} across {geo}, including {apt_closed} apartment sales covering {apt_units} units.",
       "That record is built on the same discipline applied here: verified rent rolls and operating statements, comparable sales confirmed against recorded deeds rather than aggregator data, and a value conclusion a buyer's lender can follow."
     ],
-    "achievements": [],
-    "press": []
+    "achievements": [
+      [
+        "Chairman's Club",
+        "Marcus & Millichap's top-tier annual honor"
+      ],
+      [
+        "National Achievement Award",
+        "multiple years, both partners"
+      ],
+      [
+        "#1 Most Active Multifamily Team in LA County",
+        "CoStar 2019-2021"
+      ],
+      [
+        "Sales Recognition Award",
+        "every year since 2016"
+      ],
+      [
+        "490+ closed transactions",
+        "more than $1.5 billion in sales volume"
+      ]
+    ],
+    "press": [
+      "BISNOW",
+      "YAHOO FINANCE",
+      "CONNECT CRE",
+      "SFVBJ",
+      "THE PINNACLE LIST"
+    ]
   },
   "marketing": {
     "metrics": [
@@ -581,7 +608,7 @@
   ],
   "stats": {
     "live": true,
-    "generated": "2026-08-06T15:57:13+00:00",
+    "generated": "2026-08-06T16:23:27+00:00",
     "geography": {
       "states": 21,
       "has_dc": true,
