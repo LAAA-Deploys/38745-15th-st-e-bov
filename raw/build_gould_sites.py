@@ -136,6 +136,14 @@ DISCLOSURE_COMMON = [
     "unit excluding earthquake coverage, and reserves. Property tax is reassessed at the "
     "value conclusion using effective rates observed on recently reassessed Palmdale sales, "
     "not the county default.",
+    # The operating statement drops an expense line that is zero in both columns,
+    # so the marketing line and its note are both absent from the rendered page.
+    # Marketing is $0 on all five, which meant the reason it is underwritten at
+    # zero was invisible on every live site. The disclosures always render, so
+    # the explanation lives here and cannot be dropped with the line.
+    "Marketing and advertising is underwritten at zero. The property is at or above 90% "
+    "occupancy on the June 2026 rent roll and leases on organic demand. A buyer running a "
+    "lease-up would carry a marketing budget.",
     "Unit square footages are an allocation of the assessor-verified gross building area "
     "across the rent roll unit mix, weighted by bedroom count. They are not a measured survey "
     "and will differ from advertised unit sizes.",
@@ -340,74 +348,107 @@ ACTIVE_COMPS = [
 ]
 
 
-def build_expense_lines(price, tax_rate, sc, insurance, reserves, pool, admin):
-    """The client-facing expense schedule. Order is the order it renders."""
+def build_expense_lines(price, tax_rate, sc, insurance, reserves, pool, admin, units):
+    """The client-facing expense schedule and its matching notes.
+
+    Order is the order it renders.
+
+    Note numbers are assigned AFTER the zero lines are dropped, and the note
+    text is written for THIS property only.
+
+    Both of those are Blake Lewitt findings, 2026-08-05, and both had reached
+    all five live pages. The renderer drops an expense line that is zero in
+    both columns (Glen, 2026-07-30) and the note goes with it, so fixed ids
+    1-11 left a hole in the printed sequence: Marketing is $0 on all five, so
+    every site printed 1-9 then 11, and Pool Service is $0 at 38238 and 38745,
+    so those two printed 1-7, 9, 11. Numbering the survivors makes a hole
+    unrepresentable rather than merely absent.
+
+    The note text is built from the figures actually on the line, so a note can
+    never quote a number the table does not show.
+    """
     tax = round(price * tax_rate)
-    lines = [
-        ["Property Tax", tax, tax, 1],
-        ["Insurance", round(insurance), round(insurance), 2],
-        ["Utilities", round(sc["Current"]["normalized_utilities"]),
-         round(sc["Pro Forma"]["normalized_utilities"]), 3],
-        ["Repairs & Maintenance", round(sc["Current"]["normalized_repairs_maintenance"]),
-         round(sc["Pro Forma"]["normalized_repairs_maintenance"]), 4],
-        ["Management Fee", round(sc["Current"]["management"]),
-         round(sc["Pro Forma"]["management"]), 5],
-        ["On-Site Manager Rent Credit", round(sc["Current"]["manager_credit"]),
-         round(sc["Pro Forma"]["manager_credit"]), 6],
-        ["Landscaping, Pest & Life Safety", round(sc["Current"]["normalized_recurring_services"]),
-         round(sc["Pro Forma"]["normalized_recurring_services"]), 7],
-        ["Pool Service", round(pool), round(pool), 8],
-        ["Administrative", round(admin), round(admin), 9],
-        ["Marketing & Advertising", 0, 0, 10],
-        ["Reserves", round(reserves), round(reserves), 11],
+    rm_cur = round(sc["Current"]["normalized_repairs_maintenance"])
+    rm_pf = round(sc["Pro Forma"]["normalized_repairs_maintenance"])
+    # Per-unit allowances read off the line itself, never hardcoded per asset.
+    rm_unit = round(rm_cur / units)
+    admin_unit = round(round(admin) / units)
+    pool_unit = round(round(pool) / units) if pool else 0
+
+    rows = [
+        ("Property Tax", tax, tax,
+         "Reassessed at the value conclusion using the effective rate observed on recently "
+         "reassessed Palmdale sales in the same tax rate area, not the Los Angeles County "
+         "default. Direct assessments carried on the current bill are inside this figure."),
+        ("Insurance", round(insurance), round(insurance),
+         "$1,325 per unit, earthquake coverage excluded. It is set from documented trailing "
+         "twelve month premiums rather than a broker estimate or a standard per-unit formula."),
+        ("Utilities", round(sc["Current"]["normalized_utilities"]),
+         round(sc["Pro Forma"]["normalized_utilities"]),
+         "The owner's trailing twelve month actuals for the utilities this ownership pays, "
+         "carried forward without adjustment. Tenant-paid utilities are not added back."),
+        ("Repairs & Maintenance", rm_cur, rm_pf,
+         f"A transferable allowance of ${rm_unit:,} per unit. It replaces the seller's "
+         "maintenance payroll, contract labor, painting, supplies and turnover accounts, "
+         "which are structured around a shared maintenance crew a buyer does not acquire."),
+        ("Management Fee", round(sc["Current"]["management"]),
+         round(sc["Pro Forma"]["management"]),
+         "4% of gross scheduled rent, the LAAA standard for third-party management at this "
+         "size. The seller's own management company fee and office payroll are removed rather "
+         "than carried alongside it."),
+        ("On-Site Manager Rent Credit", round(sc["Current"]["manager_credit"]),
+         round(sc["Pro Forma"]["manager_credit"]),
+         "California requires a manager residing on site at buildings of 16 or more units. The "
+         "manager unit is carried at market rent in gross scheduled rent and the credit is "
+         "shown as a separate expense. It is never folded into the management fee."),
+        ("Landscaping, Pest & Life Safety", round(sc["Current"]["normalized_recurring_services"]),
+         round(sc["Pro Forma"]["normalized_recurring_services"]),
+         "The owner's trailing twelve month actuals for landscaping, pest control, fire "
+         "extinguisher service and security, which transfer with the property."),
+        ("Pool Service", round(pool), round(pool),
+         (f"${pool_unit:,} per unit, carried because the trailing twelve month statement "
+          "shows recurring pool service spend at this property.") if pool else
+         "The property has no pool, so no pool service is underwritten."),
+        ("Administrative", round(admin), round(admin),
+         f"${admin_unit:,} per unit. It consolidates accounting, routine legal, bank charges, "
+         "licensing and office costs into one transferable figure."),
+        ("Marketing & Advertising", 0, 0,
+         "Underwritten at zero. The property is at or above 90% occupancy on the June 2026 "
+         "rent roll and leases on organic demand. A buyer running a lease-up would carry a "
+         "marketing budget."),
+        ("Reserves", round(reserves), round(reserves),
+         "A replacement reserve set per property against building age and condition. It is not "
+         "an expense the seller currently books; it is underwritten because a buyer's lender "
+         "will require it."),
     ]
-    return tax, lines
+
+    # Two passes, because two generator rules disagree and both must be met.
+    #
+    # schema.py requires every $0 expense line to carry an explanatory note (a
+    # Brio defect: trash at zero because the seller's P&L omitted it, which a
+    # buyer pays anyway). sections.py drops a line that is zero in both columns
+    # (Glen, 2026-07-30), and the note goes with it. So the schema mandates a
+    # note the renderer guarantees nobody can read.
+    #
+    # Resolution here: number the lines that will actually print first, so the
+    # reader sees a contiguous 1..N, then number the dropped zero lines after
+    # them so the required explanation still exists in the record. Those trailing
+    # notes are never emitted, because the renderer builds its note list only
+    # from lines it printed. Where a zero line represents a real underwriting
+    # decision a reader should be able to check, the explanation also goes in
+    # the disclosures, which always render. Marketing is that case on all five.
+    #
+    # The contradiction itself is a generator defect and is reported separately.
+    printed = [r for r in rows if r[1] or r[2]]
+    dropped = [r for r in rows if not (r[1] or r[2])]
+    ref_of, notes = {}, {}
+    for i, (label, cur, pf, note) in enumerate(printed + dropped, start=1):
+        ref_of[label] = i
+        notes[str(i)] = [label, note]
+    lines = [[label, cur, pf, ref_of[label]] for label, cur, pf, _ in rows]
+    return tax, lines, notes
 
 
-# Every expense line carries a note. The renderer prints a superscript for each
-# line that has a reference index and then prints only the notes that exist, so a
-# partial set published [3] [4] [5] [7] [9] [11] on the page with nothing to read
-# under them. A reference with no definition is worse than no reference.
-EXPENSE_NOTES = {
-    "1": ["Property Tax", "Reassessed at the value conclusion using the effective rate observed "
-                          "on recently reassessed Palmdale sales in the same tax rate area, not "
-                          "the Los Angeles County default. Direct assessments carried on the "
-                          "current bill are inside this figure."],
-    "2": ["Insurance", "$1,325 per unit, earthquake coverage excluded. The owner's trailing "
-                       "twelve month premiums across the five properties average $1,329 per unit, "
-                       "so this reflects documented cost rather than a broker estimate."],
-    "3": ["Utilities", "The owner's trailing twelve month actuals for the utilities this "
-                       "ownership pays, carried forward without adjustment. Tenant-paid utilities "
-                       "are not added back."],
-    "4": ["Repairs & Maintenance", "A transferable allowance of $725 per unit, or $800 at the "
-                                   "1971 asset. It replaces the seller's maintenance payroll, "
-                                   "contract labor, painting, supplies and turnover accounts, "
-                                   "which are structured around a portfolio maintenance crew a "
-                                   "buyer does not acquire."],
-    "5": ["Management Fee", "4% of gross scheduled rent, the LAAA standard for third-party "
-                            "management at this size. The seller's own management company fee "
-                            "and office payroll are removed rather than carried alongside it."],
-    "6": ["On-Site Manager Rent Credit",
-          "California requires a manager residing on site at buildings of 16 or more units. The "
-          "manager unit is carried at market rent in gross scheduled rent and the credit is shown "
-          "as a separate expense. It is never folded into the management fee."],
-    "7": ["Landscaping, Pest & Life Safety", "The owner's trailing twelve month actuals for "
-                                             "landscaping, pest control, fire extinguisher "
-                                             "service and security, which transfer with the "
-                                             "property."],
-    "8": ["Pool Service", "$100 per unit where the trailing twelve month statement carries pool "
-                          "service spend. Where there is no pool the line is zero."],
-    "9": ["Administrative", "$100 per unit, or $75 at the 76 unit asset. It consolidates "
-                            "accounting, routine legal, bank charges, licensing and office costs "
-                            "into one transferable figure."],
-    "10": ["Marketing & Advertising",
-           "Underwritten at zero. Each property is at or above 90% occupancy on the June 2026 "
-           "rent roll and leases on organic demand. A buyer running a lease-up would carry a "
-           "marketing budget."],
-    "11": ["Reserves", "A replacement reserve set per property against building age and "
-                       "condition. It is not an expense the seller currently books; it is "
-                       "underwritten because a buyer's lender will require it."],
-}
 
 
 PROPERTIES = [
@@ -565,10 +606,10 @@ def build_property(p, un):
     pre_tax_noi_m = egi_m - pre_tax_opex_m
 
     price = p["price"]
-    tax, lines = build_expense_lines(
+    tax, lines, expense_notes = build_expense_lines(
         price, p["tax_rate"],
         {"Current": dict(cur, management=mgmt_c), "Pro Forma": pf},
-        p["insurance"], cur["reserves"], p["pool"], p["admin"])
+        p["insurance"], cur["reserves"], p["pool"], p["admin"], p["units"])
     exp_c = sum(r[1] for r in lines)
     exp_m = sum(r[2] for r in lines)
     noi_c = egi_c - exp_c
@@ -609,10 +650,12 @@ def build_property(p, un):
     # disagree by a square foot or two, and printing both on one page invites a
     # seller to ask which is right. Gross area is in the cover stats and unit
     # sizes are in the unit mix; the quotient adds nothing and can only conflict.
+    # No "Operated as {public_name}" highlight. Blake Lewitt, 2026-08-05: it is
+    # unnecessary, and it is redundant with the Investment Overview paragraph
+    # directly below, which already opens with the property name.
     highlights = [
         f"{p['units']} units on a {p['lot_sf'] / 43560:.2f} acre site, built in {p['year_built']}",
         f"{p['building_sf']:,} gross building square feet",
-        f"Operated as {p['public_name']}",
         "Every unit occupied or leased on the June 2026 rent roll basis used here",
     ]
     if p["pool_yes"]:
@@ -846,7 +889,7 @@ def build_property(p, un):
             "total_return_pct": [round((cf_c + principal) / down * 100, 2),
                                  round((cf_m + principal) / down * 100, 2)],
         },
-        "expense_lines": lines, "expense_notes": EXPENSE_NOTES,
+        "expense_lines": lines, "expense_notes": expense_notes,
         "financing": {"loan_amount": loan, "rate": RATE, "amortization": AMORT,
                       "dcr": round(noi_c / ds, 2)},
         "highlights": highlights, "overview": overview,
