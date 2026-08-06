@@ -64,8 +64,35 @@
       "The LAAA Team has closed {closed} transactions totaling {volume} across {geo}, including {apt_closed} apartment sales covering {apt_units} units.",
       "That record is built on the same discipline applied here: verified rent rolls and operating statements, comparable sales confirmed against recorded deeds rather than aggregator data, and a value conclusion a buyer's lender can follow."
     ],
-    "achievements": [],
-    "press": []
+    "achievements": [
+      [
+        "Chairman's Club",
+        "Marcus & Millichap's top-tier annual honor"
+      ],
+      [
+        "National Achievement Award",
+        "multiple years, both partners"
+      ],
+      [
+        "#1 Most Active Multifamily Team in LA County",
+        "CoStar 2019-2021"
+      ],
+      [
+        "Sales Recognition Award",
+        "every year since 2016"
+      ],
+      [
+        "490+ closed transactions",
+        "more than $1.5 billion in sales volume"
+      ]
+    ],
+    "press": [
+      "BISNOW",
+      "YAHOO FINANCE",
+      "CONNECT CRE",
+      "SFVBJ",
+      "THE PINNACLE LIST"
+    ]
   },
   "marketing": {
     "metrics": [
@@ -243,25 +270,25 @@
           "Pool Service",
           0,
           0,
-          8
+          10
         ],
         [
           "Administrative",
           2200,
           2200,
-          9
+          8
         ],
         [
           "Marketing & Advertising",
           0,
           0,
-          10
+          11
         ],
         [
           "Reserves",
           5500,
           5500,
-          11
+          9
         ]
       ],
       "expense_notes": {
@@ -271,7 +298,7 @@
         ],
         "2": [
           "Insurance",
-          "$1,325 per unit, earthquake coverage excluded. The owner's trailing twelve month premiums across the five properties average $1,329 per unit, so this reflects documented cost rather than a broker estimate."
+          "$1,325 per unit, earthquake coverage excluded. It is set from documented trailing twelve month premiums rather than a broker estimate or a standard per-unit formula."
         ],
         "3": [
           "Utilities",
@@ -279,7 +306,7 @@
         ],
         "4": [
           "Repairs & Maintenance",
-          "A transferable allowance of $725 per unit, or $800 at the 1971 asset. It replaces the seller's maintenance payroll, contract labor, painting, supplies and turnover accounts, which are structured around a portfolio maintenance crew a buyer does not acquire."
+          "A transferable allowance of $725 per unit. It replaces the seller's maintenance payroll, contract labor, painting, supplies and turnover accounts, which are structured around a shared maintenance crew a buyer does not acquire."
         ],
         "5": [
           "Management Fee",
@@ -294,20 +321,20 @@
           "The owner's trailing twelve month actuals for landscaping, pest control, fire extinguisher service and security, which transfer with the property."
         ],
         "8": [
-          "Pool Service",
-          "$100 per unit where the trailing twelve month statement carries pool service spend. Where there is no pool the line is zero."
+          "Administrative",
+          "$100 per unit. It consolidates accounting, routine legal, bank charges, licensing and office costs into one transferable figure."
         ],
         "9": [
-          "Administrative",
-          "$100 per unit, or $75 at the 76 unit asset. It consolidates accounting, routine legal, bank charges, licensing and office costs into one transferable figure."
-        ],
-        "10": [
-          "Marketing & Advertising",
-          "Underwritten at zero. Each property is at or above 90% occupancy on the June 2026 rent roll and leases on organic demand. A buyer running a lease-up would carry a marketing budget."
-        ],
-        "11": [
           "Reserves",
           "A replacement reserve set per property against building age and condition. It is not an expense the seller currently books; it is underwritten because a buyer's lender will require it."
+        ],
+        "10": [
+          "Pool Service",
+          "The property has no pool, so no pool service is underwritten."
+        ],
+        "11": [
+          "Marketing & Advertising",
+          "Underwritten at zero. The property is at or above 90% occupancy on the June 2026 rent roll and leases on organic demand. A buyer running a lease-up would carry a marketing budget."
         ]
       },
       "financing": {
@@ -319,7 +346,6 @@
       "highlights": [
         "22 units on a 1.03 acre site, built in 1986",
         "13,188 gross building square feet",
-        "Operated as Vista Del Sol Apartments",
         "Every unit occupied or leased on the June 2026 rent roll basis used here",
         "Assessor parcel 3015-013-005, zoned PDR3, tax rate area 6-959",
         "FEMA Flood Zone X, outside the Special Flood Hazard Area, revalidated August 4, 2026",
@@ -393,6 +419,7 @@
         "This Broker Opinion of Value is an opinion prepared for the owner. It is not an appraisal and is not a guarantee of sale price.",
         "Operating figures are drawn from the owner's June 2026 rent roll and the trailing twelve month statement for July 2025 through June 2026. Annual columns were used throughout; individual monthly cells in the scanned statements carry optical character recognition damage and were not relied on.",
         "Expenses are presented on a buyer-normalized basis. Ownership payroll and management company overhead are replaced with a 4% third-party management fee, a separate resident manager rent credit required at 16 or more units in California, insurance at $1,325 per unit excluding earthquake coverage, and reserves. Property tax is reassessed at the value conclusion using effective rates observed on recently reassessed Palmdale sales, not the county default.",
+        "Marketing and advertising is underwritten at zero. The property is at or above 90% occupancy on the June 2026 rent roll and leases on organic demand. A buyer running a lease-up would carry a marketing budget.",
         "Unit square footages are an allocation of the assessor-verified gross building area across the rent roll unit mix, weighted by bedroom count. They are not a measured survey and will differ from advertised unit sizes.",
         "Comparable sale prices, dates, unit counts and building areas were verified against recorded deeds and assessment records. Cap rates and gross rent multipliers reported by commercial data services on those sales were not independently verified and are deliberately excluded.",
         "The collection loss line combines a 3% physical vacancy allowance with a credit loss allowance of 2% to 3% calibrated to this property's trailing delinquency. The operating table shows the two combined as a single reserve; it is not a 5% or 6% physical vacancy assumption.",
@@ -581,7 +608,7 @@
   ],
   "stats": {
     "live": true,
-    "generated": "2026-08-04T23:12:43+00:00",
+    "generated": "2026-08-06T16:23:27+00:00",
     "geography": {
       "states": 21,
       "has_dc": true,
